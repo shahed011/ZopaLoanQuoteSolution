@@ -58,8 +58,23 @@ namespace ZopaLoanQuoteSolution.Core
 
         public double GetRateFromUsableLoans(List<AvailableLoans> usableLoans, int requestedAmount)
         {
+            var sum = 0.0;
+            var targetAmount = requestedAmount;
 
-            return Math.Round(usableLoans.Select(x => x.Available * x.Rate).Sum() / requestedAmount, 2);
+            foreach (var loan in usableLoans)
+            {
+                if (loan.Available > targetAmount)
+                {
+                    sum += loan.Rate * targetAmount;
+                }
+                else
+                {
+                    sum += loan.Rate * loan.Available;
+                    targetAmount -= loan.Available;
+                }
+            }
+
+            return Math.Round(sum / requestedAmount, 3);
         }
 
         private static List<AvailableLoans> GetListOfLoansFromCsv(string fileName)

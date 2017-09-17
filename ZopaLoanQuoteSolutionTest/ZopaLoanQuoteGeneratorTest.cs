@@ -47,7 +47,7 @@ namespace ZopaLoanQuoteSolutionTest
         [Fact]
         public void GetRateTest_Success()
         {
-            Assert.Equal(0.07, _testGenerator.GetRateFromUsableLoans(GetUsableLoans(1000), 1000));
+            Assert.Equal(0.066, _testGenerator.GetRateFromUsableLoans(GetUsableLoans(1000), 1000));
         }
 
         [Fact]

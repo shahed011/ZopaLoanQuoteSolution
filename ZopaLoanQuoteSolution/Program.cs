@@ -9,7 +9,9 @@ namespace ZopaLoanQuoteSolution
         {
             if (args.Length != 2)
             {
-                Console.WriteLine("Wrong argument(s)");
+                Console.WriteLine("Wrong argument(s) provided");
+                Console.WriteLine("Argument suggestion: [application] [market_file] [loan_amount]");
+                Console.ReadLine();
                 return;
             }
 
