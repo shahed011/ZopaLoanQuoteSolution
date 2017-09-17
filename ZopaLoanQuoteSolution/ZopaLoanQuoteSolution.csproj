@@ -48,7 +48,7 @@
     <Compile Include="DataTypes\AvailableLoans.cs" />
     <Compile Include="Core\ILoanQuoteGenerator.cs" />
     <Compile Include="Core\LoanQuoteGeneratorFactory.cs" />
-    <Compile Include="Core\ZopaLoanQuoteGenerator.cs" />
+    <Compile Include="Core\Zopa36MonthsLoanQuoteGenerator.cs" />
     <Compile Include="Exceptions\LoanQuoteException.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Program.cs" />

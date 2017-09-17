@@ -9,8 +9,11 @@ using ZopaLoanQuoteSolution.Extensions;
 
 namespace ZopaLoanQuoteSolution.Core
 {
-    public class ZopaLoanQuoteGenerator : ILoanQuoteGenerator
+    public class Zopa36MonthsLoanQuoteGenerator : ILoanQuoteGenerator
     {
+        private const int LoanLengthInMonths = 36;
+        private const int MonthsInYear = 12;
+
         public void CalculateAndDisplay(string fileName, string requestedAmountString)
         {
             var requestedAmount = Convert.ToInt32(requestedAmountString);
@@ -36,13 +39,13 @@ namespace ZopaLoanQuoteSolution.Core
             Console.WriteLine($"Requested amount: {requestedAmount:C}");
             Console.WriteLine($"Rate: {newRate:p1}");
             Console.WriteLine($"Monthly repayment: {payment:C}");
-            Console.WriteLine($"Total repayment: {payment * 36:C}");
+            Console.WriteLine($"Total repayment: {payment * LoanLengthInMonths:C}");
         }
 
         public double GetMonthlyPayment(double newRate, int requestedAmount)
         {
-            var ratePerPeriod = newRate / 12;
-            return Math.Round(ratePerPeriod * requestedAmount / (1 - Math.Pow(1 + ratePerPeriod, -36)), 2);
+            var ratePerPeriod = newRate / MonthsInYear;
+            return Math.Round(ratePerPeriod * requestedAmount / (1 - Math.Pow(1 + ratePerPeriod, -LoanLengthInMonths)), 2);
         }
 
         public IEnumerable<AvailableLoans> GetUsableLoans(List<AvailableLoans> availableLoans, int requestedAmount)

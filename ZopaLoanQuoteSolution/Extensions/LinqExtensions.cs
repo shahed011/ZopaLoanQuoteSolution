@@ -9,8 +9,7 @@ namespace ZopaLoanQuoteSolution.Extensions
             this IEnumerable<TSource> source,
             TAccumulate seed,
             Func<TAccumulate, TSource, TAccumulate> func,
-            Func<TAccumulate, bool> predicate
-        )
+            Func<TAccumulate, bool> predicate)
         {
             var accumulator = seed;
             foreach (var item in source)

@@ -4,10 +4,10 @@
     {
         public ILoanQuoteGenerator Create<T>() where T : ILoanQuoteGenerator
         {
-            if (typeof(T) == typeof(ZopaLoanQuoteGenerator))
-                return new ZopaLoanQuoteGenerator();
+            if (typeof(T) == typeof(Zopa36MonthsLoanQuoteGenerator))
+                return new Zopa36MonthsLoanQuoteGenerator();
 
-            return new ZopaLoanQuoteGenerator();
+            return new Zopa36MonthsLoanQuoteGenerator();
         }
     }
 }

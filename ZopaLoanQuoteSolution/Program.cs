@@ -18,7 +18,7 @@ namespace ZopaLoanQuoteSolution
             try
             {
                 var factory = new LoanQuoteGeneratorFactory();
-                var generator = factory.Create<ZopaLoanQuoteGenerator>();
+                var generator = factory.Create<Zopa36MonthsLoanQuoteGenerator>();
 
                 generator.CalculateAndDisplay(args[0], args[1]);
             }

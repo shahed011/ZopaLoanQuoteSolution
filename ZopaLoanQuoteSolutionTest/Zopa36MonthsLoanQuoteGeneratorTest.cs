@@ -7,14 +7,14 @@ using ZopaLoanQuoteSolution.DataTypes;
 
 namespace ZopaLoanQuoteSolutionTest
 {
-    public class ZopaLoanQuoteGeneratorTest
+    public class Zopa36MonthsLoanQuoteGeneratorTest
     {
-        private readonly ZopaLoanQuoteGenerator _testGenerator;
+        private readonly Zopa36MonthsLoanQuoteGenerator _testGenerator;
         private readonly List<AvailableLoans> _availableLoans;
 
-        public ZopaLoanQuoteGeneratorTest()
+        public Zopa36MonthsLoanQuoteGeneratorTest()
         {
-            _testGenerator = new ZopaLoanQuoteGenerator();
+            _testGenerator = new Zopa36MonthsLoanQuoteGenerator();
 
             var loan1 = new AvailableLoans {Lender = "A", Rate = 0.07, Available = 600};
             var loan2 = new AvailableLoans {Lender = "B", Rate = 0.10, Available = 200};
