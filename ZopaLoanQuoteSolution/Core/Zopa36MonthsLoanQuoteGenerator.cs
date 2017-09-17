@@ -17,9 +17,14 @@ namespace ZopaLoanQuoteSolution.Core
         public void CalculateAndDisplay(string fileName, string requestedAmountString)
         {
             var requestedAmount = Convert.ToInt32(requestedAmountString);
+            if (!IsRequestedAmountValid(requestedAmount))
+            {
+                Console.WriteLine("Requested amount is not valid.");
+                Console.WriteLine("You can request of amount between £1000 and £15000 inclusive with any £100 increment.");
+                return;
+            }
 
             var availableLoans = GetListOfLoansFromCsv(fileName).OrderBy(x => x.Rate).ToList();
-
             var usableLoans = GetUsableLoans(availableLoans, requestedAmount).ToList();
 
             if (!IsQuoteAvailable(usableLoans, requestedAmount))
@@ -40,6 +45,11 @@ namespace ZopaLoanQuoteSolution.Core
             Console.WriteLine($"Rate: {newRate:p1}");
             Console.WriteLine($"Monthly repayment: {payment:C}");
             Console.WriteLine($"Total repayment: {payment * LoanLengthInMonths:C}");
+        }
+
+        public bool IsRequestedAmountValid(int amount)
+        {
+            return (amount % 100 == 0) && (amount >= 1000 && amount <= 15000);
         }
 
         public double GetMonthlyPayment(double newRate, int requestedAmount)

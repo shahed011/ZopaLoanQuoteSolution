@@ -24,6 +24,21 @@ namespace ZopaLoanQuoteSolutionTest
         }
 
         [Fact]
+        public void IsRequestedAmountValidTest_True()
+        {
+            Assert.True(_testGenerator.IsRequestedAmountValid(1000));
+            Assert.True(_testGenerator.IsRequestedAmountValid(9700));
+            Assert.True(_testGenerator.IsRequestedAmountValid(15000));
+        }
+
+        [Fact]
+        public void IsRequestedAmountValidTest_False()
+        {
+            Assert.False(_testGenerator.IsRequestedAmountValid(10010));
+            Assert.False(_testGenerator.IsRequestedAmountValid(16000));
+        }
+
+        [Fact]
         public void FindUsableLoansForRequestedAmountTest_FoundTwo()
         {
             var test = _testGenerator.GetUsableLoans(_availableLoans.OrderBy(x => x.Rate).ToList(), 1000).ToList();
